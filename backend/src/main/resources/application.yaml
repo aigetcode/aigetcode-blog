@@ -1,0 +1,75 @@
+# Server settings
+server:
+  port: 8080
+  servlet:
+    context-path:
+  compression:
+    enabled: true
+    mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript
+    min-response-size: 2048
+
+#Spring configurations
+spring:
+  # Database connection
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/blog
+    username: postgres
+    password: postgres
+    platform: postgres
+  jpa:
+    database: postgresql
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+  # Multipart settings
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2KB
+      max-file-size: 200MB
+      max-request-size: 210MB
+  # Mail settings
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username:
+    password:
+
+    # Other properties
+    properties:
+      mail:
+        smtp:
+          auth: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+          starttls:
+            enable: true
+  mvc:
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false
+    static-locations: classpath:/static/
+    cache:
+      period: 31557600s # 1 year
+
+# Default file
+spa:
+  default-file: static/index.html
+
+# Path for save image
+file:
+  upload-dir: static/images/news/
+
+# Where to send email
+email:
+  recipient:
+
+# Auth configuration
+auth:
+  token-prefix: 'Bearer '
+  header-string: Authorization
+  access-token-validity-seconds: 86400 # 24h
+  signing-key: aiegtcodeprojectsign
+  authorities-key: scopes

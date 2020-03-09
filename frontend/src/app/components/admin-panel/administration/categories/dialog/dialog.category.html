@@ -1,0 +1,9 @@
+<h3 mat-dialog-title>Создание</h3>
+<mat-dialog-content class="mat-typography">
+  <input name="name" id="name" type="text" placeholder="Name" autocomplete="off" class="w-350px"
+         [(ngModel)]="name">
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="name" cdkFocusInitial class="btn btn-md btn-dark mr-3">Сохранить</button>
+  <button mat-button mat-dialog-close class="btn btn-md btn-dark">Отмена</button>
+</mat-dialog-actions>

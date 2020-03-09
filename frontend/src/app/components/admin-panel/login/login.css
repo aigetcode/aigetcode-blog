@@ -1,0 +1,47 @@
+:host {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  background-image: url('assets/image/icon/loginBackground-1920_x_1080.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.mat-form-field {
+  width: 100%;
+  min-width: 300px;
+}
+
+mat-card {
+  height: 260px;
+  position: absolute;
+  top: 200px;
+}
+
+mat-card-title,
+mat-card-content {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+input[type=text],
+input[type=password] {
+  position: relative;
+  height: 16px;
+  line-height: 0;
+  border: 0;
+  background-color: transparent;
+  width: 100%;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+input[type=submit] {
+  padding: 10px 20px;
+}

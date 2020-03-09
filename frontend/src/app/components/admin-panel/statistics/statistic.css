@@ -1,0 +1,22 @@
+.statistic {
+  display: flex;
+}
+
+.statistic-count {
+  flex-direction: row;
+  flex: 1;
+  margin: 10px;
+}
+.statistic-count .well {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: x-large;
+}
+
+.statistic-chart {
+  display: flex;
+  flex: 3;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,114 @@
+<!-- Navigation -->
+<header class="nav-type-1" id="home">
+  <nav class="navbar navbar-fixed-top nav-admin">
+    <div class="navigation-overlay stickyAll">
+      <div class="container-fluid relative navigation-not-translucent">
+        <div class="row">
+
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            <!-- Logo -->
+            <div class="logo-container control-leftdraw">
+              <div class="logo-wrap local-scroll text-link-menu" (click)="drawerToggle(drawer)">
+                <mat-icon mat-list-icon>view_headline</mat-icon>
+                <span class="aligned-with-icon">Administrator</span>
+              </div>
+            </div>
+          </div> <!-- end navbar-header -->
+
+          <div class="col-md-8 col-xs-12 nav-wrap route-admin">
+            <div class="collapse navbar-collapse text-right" id="navbar-collapse">
+              <ul class="nav navbar-nav local-scroll text-center" id="navigation-site">
+                <li>
+                  <a routerLink="/">Главная</a>
+                </li>
+                <li>
+                  <a routerLink="/blog">Блог</a>
+                </li>
+                <li>
+                  <a routerLink="/portfolio">Портфолио</a>
+                </li>
+              </ul>
+            </div>
+          </div> <!-- end col -->
+
+          <div class="menu-socials hidden-sm hidden-xs menu-admin-user">
+            <ul>
+              <li *ngIf="!!user">
+                <a>{{ user.fullName }}</a>
+                <a class="select" (click)="logout()">Exit</a>
+              </li>
+            </ul>
+          </div>
+
+        </div> <!-- end row -->
+      </div> <!-- end container -->
+    </div> <!-- end navigation -->
+  </nav> <!-- end navbar -->
+</header> <!-- end navigation -->
+
+<main class="height-100">
+  <mat-drawer-container class="custom-container height-100" autosize>
+    <mat-drawer #drawer mode="side" [opened]="stateNav" class="left-sidenav">
+      <mat-nav-list class="pt-0">
+
+        <mat-list-item class="text-link" routerLink="/admin"
+                       [routerLinkActive]="['left-menu-active']"
+                       [routerLinkActiveOptions]="{ exact: true }">
+
+          <mat-icon mat-list-icon>graphic_eq</mat-icon>
+          <a>Статистика</a>
+        </mat-list-item>
+
+        <mat-divider></mat-divider>
+        <mat-list-item class="text-link" routerLink="/admin/news-create"
+                       [routerLinkActive]="['left-menu-active']"
+                       [routerLinkActiveOptions]="{ exact: true }">
+          <mat-icon mat-list-icon>list</mat-icon>
+          <a>Создать новость</a>
+        </mat-list-item>
+
+        <mat-divider></mat-divider>
+        <mat-list-item class="text-link" routerLink="/admin/news-list"
+                       [routerLinkActive]="['left-menu-active']"
+                       [routerLinkActiveOptions]="{ exact: true }">
+          <mat-icon mat-list-icon>list</mat-icon>
+          <a>Список статей</a>
+        </mat-list-item>
+
+        <mat-divider></mat-divider>
+        <mat-list-item class="text-link" routerLink="/admin/categories"
+                       [routerLinkActive]="['left-menu-active']"
+                       [routerLinkActiveOptions]="{ exact: true }">
+          <mat-icon mat-list-icon>list</mat-icon>
+          <a>Категории</a>
+        </mat-list-item>
+
+        <mat-divider></mat-divider>
+        <mat-list-item class="text-link" routerLink="/admin/grid_u"
+                       [routerLinkActive]="['left-menu-active']"
+                       [routerLinkActiveOptions]="{ exact: true }">
+          <mat-icon mat-list-icon>list</mat-icon>
+          <a><del>Пользователи</del></a>
+        </mat-list-item>
+
+        <mat-divider></mat-divider>
+      </mat-nav-list>
+
+    </mat-drawer>
+
+    <mat-drawer-content class="drawer-content-height mt-60">
+      <div class="mat-elevation-z8 height-auto">
+
+        <router-outlet></router-outlet>  <!--Страницы панели администратора-->
+      </div>
+    </mat-drawer-content>
+
+  </mat-drawer-container>
+</main>

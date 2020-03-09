@@ -1,0 +1,51 @@
+.w-100 {
+  width: 100%;
+}
+
+.multiselect {
+  position: relative;
+  border: 2px solid #e3e3e3;
+  background-color: transparent;
+  width: 100%;
+  margin-bottom: 16px;
+  padding: 0 16px;
+  color: #7a7a7a;
+  -webkit-transition: border-color 0.3s ease-in-out;
+  -moz-transition: border-color 0.3s ease-in-out;
+  -ms-transition: border-color 0.3s ease-in-out;
+  -o-transition: border-color 0.3s ease-in-out;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.text-word-style {
+  line-height: 30px;
+  resize: vertical;
+  min-height: 100px;
+  max-height: 300px;
+}
+
+.custom-file-upload {
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  position: relative;
+  height: 47px;
+  line-height: 47px;
+  border: 2px solid #e3e3e3;
+  background-color: transparent;
+  width: 100%;
+  margin-bottom: 16px;
+  padding: 0 16px;
+  color: #7a7a7a;
+
+  -webkit-transition: border-color 0.3s ease-in-out;
+  -moz-transition: border-color 0.3s ease-in-out;
+  -ms-transition: border-color 0.3s ease-in-out;
+  -o-transition: border-color 0.3s ease-in-out;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.custom-close-icon {
+  color: #ff645d;
+  cursor: pointer;
+}

@@ -1,0 +1,57 @@
+<div class="col-lg-12 pt-10">
+  <mat-form-field class="w-100">
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+
+  <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <mat-header-cell *matHeaderCellDef class="table-width-75"> # </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="table-width-75"> {{element.id}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Название </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+
+    <!-- Author Column -->
+    <ng-container matColumnDef="authorName">
+      <mat-header-cell *matHeaderCellDef> Автор </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.authorName}} </mat-cell>
+    </ng-container>
+
+    <!-- Category Column -->
+    <ng-container matColumnDef="categories">
+      <mat-header-cell *matHeaderCellDef> Категории </mat-header-cell>
+      <mat-cell *matCellDef="let element" [innerHTML]="element.categories"></mat-cell>
+    </ng-container>
+
+    <!-- Edit Column -->
+    <ng-container matColumnDef="edit">
+      <mat-header-cell *matHeaderCellDef class="table-width-75"> Изменить </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="table-width-75">
+        <a (click)="openDialog(element.id)" class="pointer">
+          <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>
+        </a>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Delete Column -->
+    <ng-container matColumnDef="delete">
+      <mat-header-cell *matHeaderCellDef class="table-width-75"> Удалить </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="table-width-75">
+        <a (click)="deletePost(element.id)" class="pointer">
+          <i class="fa fa-trash fa-lg" aria-hidden="true"></i>
+        </a>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator [pageSizeOptions]="[10, 5, 15, 20, 30]" showFirstLastButtons></mat-paginator>
+</div>
+

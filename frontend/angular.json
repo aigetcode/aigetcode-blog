@@ -1,0 +1,125 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "frontend": {
+      "root": "",
+      "sourceRoot": "src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "tsConfig": "src/tsconfig.app.json",
+            "polyfills": "src/polyfills.ts",
+            "assets": [
+              "src/assets",
+              "src/favicon.ico",
+              "src/manifest.webmanifest"
+            ],
+            "styles": [
+              "src/assets/css/enigma/bootstrap.css",
+              "src/assets/css/styles.css",
+              "src/assets/css/styleMain.css",
+              "src/assets/js/ckeditor/plugins/codesnippet/lib/highlight/styles/monokai_sublime.css",
+
+              "src/assets/css/enigma/magnific-popup.css",
+              "src/assets/css/enigma/rev-slider.css",
+              "src/assets/css/enigma/sliders.css",
+              "src/assets/css/enigma/responsive.css",
+              "src/assets/css/enigma/spacings.css",
+              "src/assets/css/enigma/animate.css",
+              "src/assets/css/enigma/color.css",
+              "src/assets/css/flags-icons/flag.css",
+
+              "./node_modules/ng2-toasty/style.css",
+              "./node_modules/ng2-toasty/style-bootstrap.css",
+              "./node_modules/ng2-toasty/style-default.css",
+              "./node_modules/ng2-toasty/style-material.css",
+
+              "src/assets/css/materialIcons/materialIcons.css",
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/assets/css/fonts/monsterrat.css"
+            ],
+            "scripts": [
+              "src/assets/js/enigma/jquery.min.js",
+              "src/assets/js/enigma/bootstrap.min.js",
+              "src/assets/js/enigma/jquery.themepunch.tools.min.js",
+              "src/assets/js/enigma/jquery.themepunch.revolution.min.js",
+              "src/assets/js/enigma/rev-slider.js",
+              "src/assets/js/enigma/scripts.js",
+              "src/assets/js/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "ngsw-config.json"
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "frontend:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "frontend:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "frontend:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "src/tsconfig.app.json",
+              "src/tsconfig.spec.json"
+            ],
+            "exclude": []
+          }
+        }
+      }
+    },
+    "frontend-e2e": {
+      "root": "e2e",
+      "sourceRoot": "e2e",
+      "projectType": "application"
+    }
+  },
+  "defaultProject": "frontend",
+  "schematics": {
+    "@schematics/angular:component": {
+      "prefix": "app",
+      "styleext": "css"
+    },
+    "@schematics/angular:directive": {
+      "prefix": "app"
+    }
+  }
+}

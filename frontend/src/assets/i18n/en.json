@@ -1,0 +1,94 @@
+{
+  "header": {
+    "home": "Home",
+    "blog": "Blog",
+    "portfolio": "Contact"
+  },
+  "main": {
+    "blog": "Blog",
+    "description": "IT articles, news, solutions",
+    "read": "Read...",
+    "work": "If necessary, contact: ",
+    "portfolio": "Portfolio"
+  },
+  "portfolio": {
+    "nameAuthor": "Ivanitskiy Aleksey",
+    "about": "Hello, my name is Ivanitskiy Alexey. I am a fullstack developer",
+    "aboutSite": "During the work, difficulties arise, the solution of which I would like to describe, as well as try new technologies and show how they work. The site is intended for novice developers and specialists, all publications are simple and clear, and tested. Aigetcode is created, written and supported by Ivanitsky Alexey.",
+
+    "contact": "Contacts",
+    "contactLabel": "You can contact me by sending a question by mail in the following form",
+    "contacts": {
+      "contact": "Contact",
+      "time": "Mon-Fri",
+      "address": "Address",
+      "place": "Belgorod"
+    },
+    "name": "Name*",
+    "subject": "Subject",
+    "message": "Message",
+    "sendMessage": "Send Message",
+
+    "error": "Error",
+    "errorMsg_1": "Fill in the required fields",
+    "errorMsg_2": "Server error occurred",
+    "success": "Success",
+    "successMsg_1": "Message sent"
+  },
+  "blog": {
+    "search": "Search",
+    "categories": "Categories",
+    "recentPosts": "Recent Posts",
+
+    "noPublications": "No publications",
+    "readMore": "Read more",
+    "pagePrev": "Prev",
+    "pageNext": "Next",
+
+    "labelCategory": "Category",
+    "labelComments": "Comments",
+    "labelLeaveComment": "Leave a Comment",
+    "labelSuccessComment": "Comment has been added",
+    "labelError": "Add comment error. Contact administrator."
+  },
+  "footer": {
+    "develop": "Development by"
+  },
+  "notFound": {
+    "pageNotFound": "Page Not Found",
+    "goBack": "You can go back to",
+    "homepage": "Homepage"
+  },
+
+
+  "month": {
+    "MMM": {
+      "january": "Jan",
+      "february": "Feb",
+      "march": "Mar",
+      "april": "Apr",
+      "may": "May",
+      "june": "Jun",
+      "july": "Jul",
+      "august": "Aug",
+      "september": "Sep",
+      "october": "Oct",
+      "november": "Nov",
+      "december": "Dec"
+    },
+    "MMMM": {
+      "january": "January",
+      "february": "February",
+      "march": "March",
+      "april": "April",
+      "may": "May",
+      "june": "June",
+      "july": "July",
+      "august": "August",
+      "september": "September",
+      "october": "October",
+      "november": "November",
+      "december": "December"
+    }
+  }
+}

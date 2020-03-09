@@ -1,0 +1,50 @@
+<main>
+  <div class="main-wrapper-onepage main oh">
+    <!-- Owl Slider -->
+    <section class="hero-wrap owl-theme bg-dark text-center" id="owl-slider-one-img">
+
+      <div class="item">
+        <section class="hero-wrap" [ngStyle]="{ 'background-image': 'url(' + imgPreloadUrl + ')'}">
+          <div class="container container-full-height">
+            <div class="hero-holder">
+              <div class="hero-message">
+                <h1>
+                  aigetcode
+                </h1>
+                <h3>
+                  {{ 'main.description' | translate }}
+                </h3>
+                <div class="buttons-holder mt-30">
+                  <a routerLink="/blog" class="btn btn-lg btn-transparent">{{ 'main.read' | translate }}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section> <!-- end owl slider -->
+
+    <!-- Call to Action -->
+    <section class="call-to-action">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-md-6 col-xs-12 col-lg-offset-3">
+            <h2>{{ 'main.work' | translate }}</h2>
+          </div>
+
+          <div class="col-md-3 col-xs-12 cta-button">
+            <a routerLink="/portfolio" class="btn btn-lg btn-color">{{ 'main.portfolio' | translate }}</a>
+          </div>
+
+        </div>
+      </div>
+    </section> <!-- end call to action -->
+
+    <!-- Google Map -->
+    <agm-map class="gmap" [latitude]="lat" [longitude]="lng" [zoom]="10" [scrollwheel]="false">
+      <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+    </agm-map>
+  </div> <!-- end main-wrapper -->
+
+</main>

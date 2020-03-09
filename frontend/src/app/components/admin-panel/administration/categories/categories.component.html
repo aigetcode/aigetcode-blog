@@ -1,0 +1,63 @@
+<div class="col-lg-12 pt-10">
+  <mat-form-field class="w-subscribe-50">
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+  <a (click)="create()" class="pointer p-3">
+    <i class="fa fa-plus-square fa-2x" aria-hidden="true"></i>
+  </a>
+
+  <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef class="table-width-170"> # </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="table-width-170"> {{element.id}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Название </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span *ngIf="(!editDataVisible && editDataModel && editDataModel.id === element.id)
+              || (!editDataModel || (editDataModel && editDataModel.id !== element.id))">{{element.name}}</span>
+        <div *ngIf="editDataVisible && editDataModel &&  editDataModel.id === element.id">
+          <label>
+            <input [(ngModel)]="editDataModel.name" />
+          </label>
+        </div>
+
+      </mat-cell>
+    </ng-container>
+
+    <!-- Edit Column -->
+    <ng-container matColumnDef="edit">
+      <mat-header-cell *matHeaderCellDef class="table-width-170"> Изменить </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="table-width-170">
+        <a *ngIf="(!editDataVisible && editDataModel && editDataModel.id === element.id)
+              || (!editDataModel || (editDataModel && editDataModel.id !== element.id))"
+           (click)="editData(element)" class="pointer">
+          <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>
+        </a>
+        <a *ngIf="editDataVisible && editDataModel &&  editDataModel.id === element.id"
+           (click)="saveEditData(element)" class="pointer">
+          <i class="fa fa-check fa-lg" aria-hidden="true"></i>
+        </a>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Delete Column -->
+    <ng-container matColumnDef="delete">
+      <mat-header-cell *matHeaderCellDef class="table-width-170"> Удалить </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="table-width-170">
+        <a (click)="delete(element.id)" class="pointer">
+          <i class="fa fa-trash fa-lg" aria-hidden="true"></i>
+        </a>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator [pageSizeOptions]="[10, 5, 15, 20, 30]" showFirstLastButtons></mat-paginator>
+</div>
+

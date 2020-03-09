@@ -1,0 +1,40 @@
+<div class="height-100 statistic">
+
+  <div class="statistic-count">
+    <mat-card class="well">
+      <div>Project statistics</div>
+    </mat-card>
+
+    <mat-card class="well">
+      <div>Total visitors</div>
+      <div *ngIf="!!statistic">{{ statistic.totalVisitors }}</div>
+    </mat-card>
+
+    <mat-card class="well">
+      <div>Total posts</div>
+      <div *ngIf="!!statistic">{{ statistic.totalCountPosts }}</div>
+    </mat-card>
+
+  </div>
+
+  <mat-card class="well statistic-chart">
+
+    <div style="display: block" *ngIf="barChartData.length > 0">
+      <canvas baseChart
+              height="800"
+              width="1100"
+              [datasets]="barChartData"
+              [labels]="barChartLabels"
+              [options]="barChartOptions"
+              [plugins]="barChartPlugins"
+              [legend]="barChartLegend"
+              [chartType]="barChartType"
+              [colors]="colors">
+      </canvas>
+    </div>
+
+  </mat-card>
+
+</div>
+
+

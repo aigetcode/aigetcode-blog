@@ -1,0 +1,152 @@
+<main>
+  <div class="main-wrapper-onepage main oh">
+
+    <!-- Page Title -->
+    <section class="page-title text-center background" [ngStyle]="{ 'background': 'url(' + imgPreloadUrl + ') no-repeat top'}">
+      <div class="layer">
+        <div class="container relative clearfix">
+          <div class="title-holder">
+            <div class="title-text">
+              <h1 class="color-white heading-frame">aigetcode</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> <!-- end page title -->
+
+    <!-- Blog Standard -->
+    <section class="section-wrap" id="blog-standard">
+      <div class="container relative">
+        <input type="search" class="searchbox hidden-lg hidden-md"
+               placeholder="{{ 'blog.search' | translate }}"
+               maxlength="100"
+               [(ngModel)]="searchParam"
+               (ngModelChange)="searchNews()">
+
+        <div class="row">
+
+          <!-- content -->
+          <div class="col-sm-8 blog-content">
+
+            <!-- standard post -->
+            <div *ngFor="let post of news; let i = index" [attr.data-index]="i">
+              <div class="entry-item">
+                <div class="entry-img" *ngIf="post.image">
+                  <a routerLink="/blog/post/{{post.id}}">
+                    <img [src]="post.image" (load)="onLoadImageNews(i)" alt="News image" [hidden]="!post.isLoadedImage">
+                    <img [src]="'assets/image/blog/stub_image.jpg'" alt="News image" [hidden]="post.isLoadedImage">
+                  </a>
+                </div>
+
+                <div class="entry-title">
+                  <h2>
+                    <a class="link-hover" routerLink="/blog/post/{{post.id}}">{{post.title}}</a>
+                  </h2>
+                </div>
+                <div class="block-info">
+                  <ul class="entry-meta">
+                    <li class="entry-date">
+                      <span>{{post.createAt | localizedDate: 'dd MMM, yyyy' }}</span>
+                    </li>
+                    <li *ngIf="post.author != null" class="entry-author">
+                      <span>{{post.author.fullName}}</span>
+                    </li>
+                    <li *ngIf="false" class="entry-category">
+                      in <a href="#">Photography</a>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="entry">
+                  <div class="entry-content">
+                    <p>{{ post.previewPost }}</p>
+                    <a routerLink="/blog/post/{{post.id}}" class="read-more link-hover">
+                      {{ 'blog.readMore' | translate }}
+                      <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <hr/>
+            </div> <!-- end entry item -->
+
+            <div class="entry-item" *ngIf="!news || news.length === 0">
+              <div class="loader-custom-blog loader-custom" *ngIf="isLoadingNews">
+                "Loading..."
+              </div>
+
+              <h3 *ngIf="!isLoadingNews">{{ 'blog.noPublications' | translate }}</h3>
+            </div>
+
+            <!-- Pagination -->
+            <nav class="pagination clear text-center" *ngIf="totalPages > 1">
+              <a href="javascript:;" (click)="getNews(numberPage - 1, true)"
+                 [ngClass]="{'not-link': numberPage - 1 <= 0}">
+                {{ 'blog.pagePrev' | translate }}
+              </a>
+
+              <a *ngFor="let i of totalPagesArr"
+                    (click)="getNews(i, true)"
+                    class="not-text pointer-important"
+                    [ngClass]="{
+                      'page-numbers': i == numberPage,
+                      'current': i == numberPage
+                    }">{{ i }}</a>
+
+              <a href="javascript:;" (click)="getNews(numberPage + 1, true)"
+                 [ngClass]="{'not-link': numberPage + 1 > totalPages}">
+                {{ 'blog.pageNext' | translate }}
+              </a>
+            </nav>
+
+          </div> <!-- end col -->
+
+          <!-- sidebar -->
+          <div class="col-sm-4 sidebar blog-sidebar">
+            <input type="search" class="searchbox hidden-sm hidden-xs"
+                   placeholder="{{ 'blog.search' | translate }}"
+                   maxlength="100"
+                   [(ngModel)]="searchParam"
+                   (ngModelChange)="searchNews()">
+
+            <button type="submit" class="search-button"><i class="icon icon_search"></i></button>
+
+            <!-- Category -->
+            <div class="widget categories" *ngIf="!!categories && categories.length !== 0">
+              <h3 class="widget-title">{{ 'blog.categories' | translate }}</h3>
+              <ul>
+                <li>
+                  <i class="fa fa-chevron-right category-icon" aria-hidden="true"></i>
+                  &nbsp;<a href="javascript:void(0);" [ngClass]="{'category-active': categoryId === -1 || !categoryId}"
+                           (click)="changeGroupNewsSearch(-1)">Все категории</a>
+                </li>
+                <li *ngFor="let category of categories">
+                  <i class="fa fa-chevron-right category-icon" aria-hidden="true"></i>
+                  &nbsp;<a href="javascript:void(0);" [ngClass]="{'category-active': categoryId === category.id}"
+                           (click)="changeGroupNewsSearch(category.id)">{{category.name}}</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="widget latest-posts" *ngIf="!!recentPosts && recentPosts.length !== 0">
+              <h3 class="widget-title">{{ 'blog.recentPosts' | translate }}</h3>
+              <ul>
+                <li class="clearfix" *ngFor="let post of recentPosts">
+                  <a class="link-hover" routerLink="/blog/post/{{post.id}}">
+                    {{ post.title }}
+                    <div class="entry-date">
+                      <a href="#">{{post.createAt | localizedDate: 'dd MMM, yyyy' }}</a>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+          </div> <!-- end col -->
+        </div> <!-- end row -->
+      </div> <!-- end container -->
+    </section> <!-- end blog standard -->
+
+  </div> <!-- end main-wrapper -->
+</main>

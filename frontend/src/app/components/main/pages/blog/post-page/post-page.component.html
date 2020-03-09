@@ -1,0 +1,130 @@
+<div class="main-wrapper-onepage main oh">
+
+  <!-- Blog Single -->
+  <section class="section-wrap pb-100 blog-single">
+    <div class="container relative">
+      <div class="row">
+
+        <!-- content -->
+        <div class="col-sm-12 blog-content">
+
+          <!-- standard post -->
+          <div class="text-center" *ngIf="news === null">
+            <div class="loader-custom">
+              "Loading..."
+            </div>
+          </div>
+
+          <div class="entry-item" *ngIf="news !== null">
+            <div class="row">
+              <div class="col-sm-10 col-sm-offset-1">
+
+                <div class="entry-title-post entry-title">
+                  <h2>{{ news.title }}</h2>
+                </div>
+                <ul class="entry-meta bottom-line">
+                  <li class="entry-date">
+                    <span>{{ news.createAt | localizedDate: 'dd MMM, yyyy' }}</span>
+                  </li>
+                  <li class="entry-author">
+                    <span>{{ news.author.fullName }}</span>
+                  </li>
+                </ul>
+
+                <div class="entry-img" *ngIf="!!news.image">
+                  <img [src]="news.image" alt="Main image">
+                </div>
+
+                <div class="entry">
+                  <div class="entry-content">
+
+                    <div class="content-color" [innerHTML] = "news.text | safeHtml"></div>
+
+                    <div class="row mt-30">
+                      <div class="col-md-8">
+                        <div class="entry-tags">
+                          <h6>{{ 'blog.labelCategory' | translate }}:</h6>
+                          <span>{{stringCategories}}</span>
+                        </div>
+                      </div> <!-- end tags -->
+                    </div> <!-- end share -->
+
+                  </div>
+                </div> <!-- end entry -->
+
+              </div>
+            </div> <!-- end row -->
+
+          </div> <!-- end entry item -->
+        </div> <!-- end col -->
+
+      </div> <!-- end row -->
+
+    </div> <!-- end container -->
+  </section> <!-- end blog single -->
+
+  <!-- Comments -->
+  <section class="entry-comments section-wrap pt-100 pb-100 bg-light" *ngIf="news !== null && news.commentaries && news.commentaries.length > 0">
+    <div class="container">
+      <h4 class="text-center mb-50">{{news.commentaries.length}} {{ 'blog.labelComments' | translate }}</h4>
+
+      <ul class="comment-list">
+        <li *ngIf="false">
+<!--          <div class="comment-body">-->
+<!--            <div class="comment-content">-->
+<!--              <span class="comment-author">Michael Doe</span>-->
+<!--              <span><a href="#">July 25, 2015 at 06:15 pm</a></span>-->
+<!--              <p>We continuosly seek between design and technology. For over a decade, we've helped businesses to craft honest, emotional experiences through strategy, brand development, graphic design, our team hand picked to provide the right balance of skills to work</p>-->
+<!--              <a href="#">Reply</a>-->
+<!--            </div>-->
+<!--          </div>-->
+
+<!--          <ul class="comment-reply">-->
+<!--            <li>-->
+<!--              <div class="comment-body">-->
+<!--                <div class="comment-content">-->
+<!--                  <span class="comment-author">Jessica Doe</span>-->
+<!--                  <span><a href="#">July 23, 2015 at 14:48 pm</a></span>-->
+<!--                  <p>We continuosly seek between design and technology. For over a decade, we've helped businesses to craft honest, emotional experiences through strategy, brand development, graphic design, our team hand picked to provide the right balance of skills to work</p>-->
+<!--                  <a href="#">Reply</a>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </li> &lt;!&ndash; end reply comment &ndash;&gt;-->
+<!--          </ul>-->
+        </li> <!-- end 1-2 comment -->
+
+        <li *ngFor="let comment of news.commentaries">
+          <div class="comment-body">
+            <div class="comment-content">
+              <span class="comment-author">{{comment.name}}</span>
+              <span>{{comment.createAt | localizedDate: 'dd MMM, yyyy' }} at {{comment.createAt | date:'H:mm' }}</span>
+              <p>{{comment.comment}}</p>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section> <!--  end comments -->
+
+  <!-- Comment form -->
+  <section class="section-wrap contact-form pt-100 pb-100">
+    <div class="container">
+      <h5 class="text-center mb-50">{{ 'blog.labelLeaveComment' | translate }}</h5>
+
+      <div class="row">
+
+        <div class="col-md-6 col-md-offset-3">
+          <form id="contact-form" (ngSubmit)="addComment()">
+            <input name="name" id="name" type="text" placeholder="Name" [(ngModel)]="commentName" />
+            <textarea name="comment" id="comment" placeholder="Comment" [(ngModel)]="commentText"></textarea>
+            <input type="submit" class="btn btn-lg btn-color btn-submit" value="Submit" id="submit-message">
+            <div id="msg" class="message"></div>
+          </form>
+        </div> <!-- end col -->
+
+      </div>
+    </div>
+  </section> <!-- end comment form -->
+
+</div>
