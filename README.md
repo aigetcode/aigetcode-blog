@@ -1,6 +1,7 @@
 # Blog AIGetCode
 
 Adaptive layout for any type of device
+
 Spring Boot, Angular, PostgreSQL
 
 ## Requirements
